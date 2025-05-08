@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Артём & Анастасия</title>
+  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --background: #fff8f5;
+      --section-bg: #f4e1d2;
+      --accent: #b67b6d;
+      --text-primary: #8e6050;
+      --text-secondary: #444;
+      --white: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text-secondary);
+      background: var(--background);
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-family: 'Marck Script', cursive;
+      font-size: 3rem;
+      margin-top: 40px;
+      color: var(--accent);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin: 10px 0;
+      color: var(--text-primary);
+    }
+
+    .date {
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 30px;
+    }
+
+    .section {
+      max-width: 600px;
+      margin: 40px auto;
+      background: var(--section-bg);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    }
+
+    .map {
+      margin-top: 20px;
+      font-size: 1rem;
+    }
+
+    .dress-code {
+      font-style: italic;
+      margin-top: 20px;
+      color: #666;
+    }
+
+    .palette {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .color {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 10px;
+      border: 2px solid #ddd;
+    }
+
+    .blush { background: #f9d5d3; }
+    .beige { background: #f4e1d2; }
+    .dusty-rose { background: #d8a39d; }
+    .olive { background: #b5a98f; }
+    .soft-grey { background: #e4e4e4; }
+
+    #countdown {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Артём & Анастасия</h1>
+  <div class="date">11.10.2025 16:00 &nbsp;|&nbsp; Новосибирск</div>
+
+  <div class="section">
+    <h2>Дорогие друзья!</h2>
+    <p>С любовью приглашаем вас на наш самый важный день.</p>
+    <p>Мы говорим "да" друг другу и хотим разделить этот момент с вами.</p>
+  </div>
+
+  <div class="section">
+    <h2>📍 Место проведения</h2>
+    <p><strong>Банкетный зал "Белый зал"</strong></p>
+    <p>Новосибирская область, г. Новосибирск</p>
+    <p>Начало в 16:00</p>
+    <div class="map">
+      <a href="https://yandex.ru/maps/-/CHrkIU~I" target="_blank">Открыть в Яндекс.Картах</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>👗 Dress Code</h2>
+    <p class="dress-code">Элегантно и удобно.  
+        Будем рады пастельным оттенкам, спокойным тонам и вашей улыбке ✨</p>
+    <p>Вы можете выбрать наряд в одном из следующих оттенков:</p>
+    <div class="palette">
+      <div class="color blush" title="Нежно-розовый"></div>
+      <div class="color beige" title="Бежевый"></div>
+      <div class="color dusty-rose" title="Пыльная роза"></div>
+      <div class="color olive" title="Оливковый"></div>
+      <div class="color soft-grey" title="Светло-серый"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>⏳ Обратный отсчёт</h2>
+    <p id="countdown">До свадьбы осталось: ...</p>
+  </div>
+
+  <footer>
+    С любовью, Артём и Анастасия
+  </footer>
+
+  <script>
+    const countdownElement = document.getElementById("countdown");
+    const weddingDate = new Date("2025-10-11T16:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = weddingDate - now;
+
+      if (diff <= 0) {
+        countdownElement.innerText = "Событие уже началось!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownElement.innerText = `До свадьбы осталось: ${days} дн. ${hours} ч. ${minutes} мин. ${seconds} сек.`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
